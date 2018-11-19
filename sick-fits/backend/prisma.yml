@@ -1,0 +1,10 @@
+endpoint: ${env:PRISMA_ENDPOINT}
+datamodel: datamodel.prisma
+# secret: ${env:PRISMA_SECRET}
+hooks:
+  post-deploy:
+    - graphql get-scheme -p prisma
+
+generate:
+  - generator: flow-client
+    output: ./generated/prisma-client/
